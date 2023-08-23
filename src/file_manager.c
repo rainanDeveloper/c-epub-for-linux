@@ -57,8 +57,6 @@ char **get_files(char *path) {
     exit(EXIT_FAILURE);
   }
 
-  printf("%d files\n", filecount);
-
   if (is_directory(path)) {
     DIR *dirpointer;
     struct dirent *entrypointer;
