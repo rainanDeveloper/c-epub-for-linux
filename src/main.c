@@ -6,6 +6,8 @@
 int main(int argc, char *argv[]) {
 
   char *path;
+  char **files;
+  int i;
 
   if (argc < 2) {
     printf("%s: missing file operand\n", PROJECT_NAME);
@@ -14,7 +16,13 @@ int main(int argc, char *argv[]) {
 
   path = argv[1];
 
-  get_files(path);
+  files = get_files(path);
+
+  i = 0;
+  while (files[i]) {
+    printf("%s\n", files[i]);
+    i++;
+  }
 
   exit(EXIT_SUCCESS);
 }

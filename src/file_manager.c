@@ -29,7 +29,8 @@ bool path_exists(char *path) {
   return false;
 }
 
-void get_files(char *path) {
+int get_file_count(char *path) {
+  int count = 0;
   if (path_exists(path) == false) {
     exit(EXIT_FAILURE);
   }
@@ -40,10 +41,37 @@ void get_files(char *path) {
     dirpointer = opendir(path);
     if (dirpointer != NULL) {
       while ((entrypointer = readdir(dirpointer)) != NULL) {
-        printf("%s\n", entrypointer->d_name);
+        count++;
+      }
+    }
+  }
+
+  return count;
+}
+
+char **get_files(char *path) {
+  int filecount = get_file_count(path);
+  char **files = malloc(sizeof(char *) * filecount);
+  int i = 0;
+  if (path_exists(path) == false) {
+    exit(EXIT_FAILURE);
+  }
+
+  printf("%d files\n", filecount);
+
+  if (is_directory(path)) {
+    DIR *dirpointer;
+    struct dirent *entrypointer;
+    dirpointer = opendir(path);
+    if (dirpointer != NULL) {
+      while ((entrypointer = readdir(dirpointer)) != NULL) {
+        files[i] = entrypointer->d_name;
+        i++;
       }
 
       closedir(dirpointer);
     }
   }
+
+  return files;
 }

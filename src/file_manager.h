@@ -11,4 +11,6 @@ bool path_exists(char *path);
 
 bool is_epub_file(char *path);
 
-void get_files(char *path);
+int get_file_count(char *path);
+
+char **get_files(char *path);
