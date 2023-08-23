@@ -37,3 +37,9 @@ build:
 
 clean:
 	rm -rf $(BUILD_DIR)
+
+install:
+	cp $(BUILD_DIR)$(PROJECT_NAME) /usr/bin
+
+uninstall:
+	rm /usr/bin/$(PROJECT_NAME)
