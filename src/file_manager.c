@@ -1,8 +1,4 @@
 #include "./file_manager.h"
-#include <dirent.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 bool is_regular_file(char *path) {
   struct stat path_stat;

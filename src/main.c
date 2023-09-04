@@ -1,5 +1,5 @@
 #include "./main.h"
-#include "./file_manager.h"
+#include "./epub.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 
   path = argv[1];
 
-  files = get_files(path);
+  files = get_epubs(path);
 
   i = 0;
   while (files[i]) {
